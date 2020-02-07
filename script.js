@@ -20,4 +20,28 @@ findEl.on("click", function() {
 // when the user selects an option, display
 });
 
+
+
+
+
+
+
+
+
+var imageScroll = $("#imageScroll");
+    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=15&page=1"
+
+    // https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
+
+    $.ajax({
+      url: pexelUrl,
+      headers: {
+        'Authorization': '563492ad6f917000010000012e154557ed544fe39097059286f8e737',
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }).then(function (data) {
+      console.log(data);
+    })
+
 });
