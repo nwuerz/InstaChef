@@ -7,10 +7,11 @@ var carbsEl = $("#carbsEl");
 var findEl = $("#findEl");
 var startDiv = $("#startDiv");
 var optionsDiv = $("#optionDiv");
+var apiKey = "&apiKey=103be80050034030a9270b7a9de5630f";
 
 // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
-findEl.on("click", function() {
-    var recipeURL = "http://www.recipepuppy.com/api/?i=" + proteinEl.val() + veggiesEl.val() + spicesEl.val() + carbsEl.val();
+findEl.on("click", function() {                             
+    var recipeURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + proteinEl.val() + veggiesEl.val() + spicesEl.val() + carbsEl.val(); + apiKey;
     $.ajax({
         url: recipeURL,
         method: 'GET',
@@ -20,7 +21,16 @@ findEl.on("click", function() {
         startDiv.attr("class", "hideDiv");
         optionsDiv.attr("class", "displayDiv");
         //append results from returned object to corresponding elements
-        
+        for (let i = 0; i < array.length; i++) {
+          //create elements
+          var optionImg = $("<img>");
+          optionImg.attr("src", "response[i].image");
+          optionsDiv.append(optionImg);
+          var optionBtn = $("<button>");
+          optionBtn.text("option " + response[i]+1);
+        }
+
+
       });
 //clear 
 
