@@ -6,6 +6,11 @@
     display: inline;
 }
 
-/* .carouselImage {
-    height:600px;
-} */
+#findRecipe {
+    margin: auto;
+    margin-top: 5%;
+}
+
+#selectionsRow {
+    margin: 5%;
+}
