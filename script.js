@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 
 
-  $(".btn-primary").on("click", function () {
+  var imageLoad = (function () {
     var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=15&page=1"
 
     // https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
@@ -77,5 +77,9 @@ $(document).ready(function () {
 
     })
   })
+  imageLoad()
+  $("#findRecipe").click(function(){
+    $("#create").hide();
+  });
 
 });
