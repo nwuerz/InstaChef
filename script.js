@@ -51,6 +51,8 @@ $findRecipe.on("click", function() {
         method: 'GET',
       }).then(function(response) {
         console.log(response);
+        //create a page containing the recipe options with an image and a button for each option
+
       });
 
 
