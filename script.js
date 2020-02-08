@@ -8,6 +8,32 @@ var findEl = $("#findEl");
 var startDiv = $("#startDiv");
 var optionsDiv = $("#optionDiv");
 var apiKey = "&apiKey=103be80050034030a9270b7a9de5630f";
+//protein options
+var chickenEl = $("#chicken");
+var porkEl = $("pork");
+var groundBeefEl = $("groundBeef");
+var fishEl = $("fish");
+var tofuEl = $("tofu");
+//veggie options
+var cornEl = $("corn");
+var spinachEl = $("spinach");
+var greenbeanEl = $("greenBeans");
+var potatoeEl = $("potatoes");
+var squashEl = $("squash");
+//spice options
+var saltEl = $("salt");
+var pepperEl = $("pepper");
+var crushedRedPepperEl = $("crushedRedPepper");
+var cayenneEl = $("cayenne");
+var ThymeEl = $("thyme");
+//carbs options
+var whiteRiceEl = $("whiteRice");
+var brownRiceEl = $("brownRice");
+var pastaEl = $("pasta");
+var tortillaEl = $("tortillas");
+var breadEl = $("bread");
+
+
 
 // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
 findEl.on("click", function() {                             
