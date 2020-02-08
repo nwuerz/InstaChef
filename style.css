@@ -51,3 +51,27 @@
 /* .hide{
     display: none;
 } */
+.container{
+    /* background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80'); */
+    /* background-color: turquoise; */
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	/* height:500px;
+	width:500px; */
+}
+ 
+#findRecipe{
+    display: block;
+  max-width: 300px;
+  margin: auto;
+  background-color: whitesmoke;
+}
+
+.background{
+    /* background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80'); */
+    /* background-color: violet; */
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
