@@ -1,3 +1,7 @@
+body {
+    background: rgb(145, 36, 36);
+}
+
 .hideDiv {
     display: none;
 }
