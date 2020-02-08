@@ -1,0 +1,20 @@
+body {
+    background: rgb(145, 36, 36);
+}
+
+.hideDiv {
+    display: none;
+}
+
+.dispayDiv {
+    display: inline;
+}
+
+#findRecipe {
+    margin: auto;
+    margin-top: 5%;
+}
+
+#selectionsRow {
+    margin: 5%;
+}
