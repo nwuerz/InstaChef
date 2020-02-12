@@ -48,12 +48,37 @@ $(document).ready(function () {
         recipeImg.attr('class', 'recipeImg')
 
       }
-
+      //when user clicks on image
       $('.recipeImg').on("click", function() {
+        $("#nutrition").empty();
+        $("#diets").empty();
         var recipeId = $(this).attr('id');
-        selectRecipe.attr('data-recipeId', recipeId)
-      });
+        console.log("recipeId is:" + recipeId);
+        selectRecipe.attr('data-recipeId', recipeId);
+        var modalInfoUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?includeNutrition=true" + apiKey;
+        $.ajax({
+          url: modalInfoUrl,
+          method: 'GET',
+        }).then(function (response) {
+          console.log(response);
+          $("#exampleModalLongTitle").text(response.title);
+          $("#readyIn").text("ready in " + response.readyInMinutes + " minutes!");
+          $("#servings").text("serves " + response.servings);
+          //loop through first p nutrition items and append to nutrition div
+          for (let i = 0; i < 9; i++) {
+            var nutritionInfo = $("<p>");
+            nutritionInfo.text("   " + response.nutrition.nutrients[i].title + " : " + response.nutrition.nutrients[i].amount + response.nutrition.nutrients[i].unit);
+            $("#nutrition").append(nutritionInfo);         
+          }
+          for (let i = 0; i < response.diets.length; i++) {
+            var dietsInfo = $("<p>");
+            dietsInfo.text("   " + response.diets[i]);
+            $("#diets").append(dietsInfo);
+          }
+        });
 
+      });
+      //when user clicks "take me to recipe"..
       selectRecipe.on('click', function(){
         var recipeId = $(this).attr('data-recipeId');
         console.log(recipeId);
@@ -67,7 +92,7 @@ $(document).ready(function () {
           $("#finalRecipeImg").attr("src", response.image);
           //loop through ingredients and append to ingredients div
           for (let i = 0; i < response.nutrition.ingredients.length; i++) {
-            var listEl = $("<li>");
+            var listEl = $("<p>");
             listEl.text(response.nutrition.ingredients[i].name + " - " + response.nutrition.ingredients[i].amount + " " + response.nutrition.ingredients[i].unit);
             $("#ingredientsDiv").append(listEl);
           }
@@ -91,7 +116,7 @@ $(document).ready(function () {
 
 
   var imageLoad = (function () {
-    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=100&page=1"
+    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=20&page=1"
 
     // https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
 
