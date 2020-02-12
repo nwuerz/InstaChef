@@ -184,10 +184,4 @@ $("#goBack").click(function () {
   $("#recipeInstructions").empty();
 });
 
-//go back from container 2
-$("#goBackPage2").click(function () {
-  $("#container1").show();
-  $("#container2").empty();
-});
-
 });
