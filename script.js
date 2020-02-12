@@ -57,6 +57,8 @@ $(document).ready(function () {
         var recipeImg = $("<img>");
         console.log(response[i].image)
         recipeImg.attr("src", response[i].image);
+        recipeImg.attr("data-toggle", "modal");
+        recipeImg.attr("data-target", "#exampleModalLong");
         container.append(recipeImg);
         var imageBreak = $("<br>");
         container.append(imageBreak);
