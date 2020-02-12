@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  var container = $(".container");
   //protein options
   var $chicken = $("#chicken");
   var $pork = $("#pork");
@@ -44,15 +44,30 @@ $(document).ready(function () {
 
     });
     console.log(ingredientsArr);
-    var ingredientsJoined = ingredientsArr.join("+");
+    var ingredientsJoined = ingredientsArr.join(",+");
     var recipeURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredientsJoined + apiKey;
     $.ajax({
       url: recipeURL,
       method: 'GET',
     }).then(function (response) {
+      console.log(recipeURL);
       console.log(response);
-      //create a page containing the recipe options with an image and a button for each option
+      //loop through object and create an image and button for each recipe option
+      for (let i = 0; i < response.length; i++) {
+        var recipeImg = $("<img>");
+        console.log(response[i].image)
+        recipeImg.attr("src", response[i].image);
+        recipeImg.attr("data-toggle", "modal");
+        recipeImg.attr("data-target", "#exampleModalLong");
+        container.append(recipeImg);
+        var imageBreak = $("<br>");
+        container.append(imageBreak);
+        var recipeBtn = $("<button>");
+        recipeBtn.text(response[i].title);
+        container.append(recipeBtn);
 
+        
+      }
     });
 
     
