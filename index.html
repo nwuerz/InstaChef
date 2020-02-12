@@ -1,148 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>recipe app</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>recipe app</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
 </head>
+
 <body id="body">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="row">
+    <div id="create">
 
-            <div class="col-sm-12">
+      <div class="row">
 
-                <div id="carouselDiv" class="carousel slide" data-ride="carousel">
+        <div class="col-sm-12">
 
-                    <div class="carousel-inner">
-                      
-                        <div class="carousel-item active">
-                        
-                            <img class="d-block w-100 rounded-circle" alt="First slide">
+          <div id="carouselDiv" class="carousel slide" data-ride="carousel">
 
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+
+                <img class="d-block w-100 rounded-circle" alt="First slide">
+
+              </div>
+
             </div>
+
+          </div>
 
         </div>
 
-        <div class="row" id="selectionsRow">
-            <!-- protein options -->
-            <div id="accordion" class="col-sm-3">
-                <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                      <button id="protein" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Protein
-                      </button>
-                    </h5>
-                  </div>
-                    <!-- dropdown options -->
-                    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-    
-                            <input type="checkbox" class="form-check-input" id="chicken" value="chicken">
-                            <label class="form-check-label" for="exampleCheck1">Chicken</label>
-    
-                            <br>
-                            
-                            <!-- <input type="checkbox" class="form-check-input" id="turkey">
+      </div>
+
+      <div class="row" id="selectionsRow">
+        <!-- protein options -->
+        <div id="accordion" class="col-sm-3">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button id="protein" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="false" aria-controls="collapseOne">
+                  Protein
+                </button>
+              </h5>
+            </div>
+            <!-- dropdown options -->
+            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+
+                <input type="checkbox" class="form-check-input" id="chicken" value="chicken">
+                <label class="form-check-label" for="exampleCheck1">Chicken</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="turkey">
                             <label class="form-check-label" for="exampleCheck1">Turkey</label>
     
                             <br> -->
-    
-                            <input type="checkbox" class="form-check-input" id="pork" value="pork">
-                            <label class="form-check-label" for="exampleCheck1">Pork</label>
-    
-                            <br>
-    
-                            <!-- <input type="checkbox" class="form-check-input" id="steak">
+
+                <input type="checkbox" class="form-check-input" id="pork" value="pork">
+                <label class="form-check-label" for="exampleCheck1">Pork</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="steak">
                             <label class="form-check-label" for="exampleCheck1">Steak</label>
     
                             <br> -->
-    
-                            <input type="checkbox" class="form-check-input" id="groundBeef" value="groundbeef">
-                            <label class="form-check-label" for="exampleCheck1">Ground Beef</label>
-    
-                            <br>
-    
-                            <!-- <input type="checkbox" class="form-check-input" id="shrimp">
+
+                <input type="checkbox" class="form-check-input" id="groundBeef" value="groundbeef">
+                <label class="form-check-label" for="exampleCheck1">Ground Beef</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="shrimp">
                             <label class="form-check-label" for="exampleCheck1">Shrimp</label>
     
                             <br> -->
-    
-                            <input type="checkbox" class="form-check-input" id="fish" value="fish">
-                            <label class="form-check-label" for="exampleCheck1">Fish</label>
-    
-                            <br>
-                            
-                            <!-- <input type="checkbox" class="form-check-input" id="bacon">
+
+                <input type="checkbox" class="form-check-input" id="fish" value="fish">
+                <label class="form-check-label" for="exampleCheck1">Fish</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="bacon">
                             <label class="form-check-label" for="exampleCheck1">Bacon</label>
 
                             <br> -->
 
-                            <input type="checkbox" class="form-check-input" id="tofu" value="tofu">
-                            <label class="form-check-label" for="exampleCheck1">Tofu</label>
-    
-                            <br>
-    
-                        </div>
-                    </div>
+                <input type="checkbox" class="form-check-input" id="tofu" value="tofu">
+                <label class="form-check-label" for="exampleCheck1">Tofu</label>
 
-                </div>
+                <br>
 
+              </div>
             </div>
-            <!-- veggies options -->
-            <div id="accordion" class="col-sm-3">
-                <div class="card">
-                  <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                      <button id="viggies" class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Veggies
-                      </button>
-                    </h5>
-                  </div>
-                  <!-- dropdown options -->
-                  <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
 
-                        <input type="checkbox" class="form-check-input" id="corn" value="corn">
-                        <label class="form-check-label" for="exampleCheck1">Corn</label>
+          </div>
 
-                        <br>
-                        
-                        <input type="checkbox" class="form-check-input" id="spinach" value="spinach">
-                        <label class="form-check-label" for="exampleCheck1">Spinach</label>
+        </div>
+        <!-- veggies options -->
+        <div id="accordion" class="col-sm-3">
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button id="viggies" class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="false" aria-controls="collapseTwo">
+                  Veggies
+                </button>
+              </h5>
+            </div>
+            <!-- dropdown options -->
+            <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
 
-                        <br>
+                <input type="checkbox" class="form-check-input" id="corn" value="corn">
+                <label class="form-check-label" for="exampleCheck1">Corn</label>
 
-                        <input type="checkbox" class="form-check-input" id="greenBeans" value="greenbeans">
-                        <label class="form-check-label" for="exampleCheck1">Green Beans</label>
+                <br>
 
-                        <br>
+                <input type="checkbox" class="form-check-input" id="spinach" value="spinach">
+                <label class="form-check-label" for="exampleCheck1">Spinach</label>
 
-                        <input type="checkbox" class="form-check-input" id="potatoes" value="potato">
-                        <label class="form-check-label" for="exampleCheck1">Potatoes</label>
+                <br>
 
-                        <br>
+                <input type="checkbox" class="form-check-input" id="greenBeans" value="greenbeans">
+                <label class="form-check-label" for="exampleCheck1">Green Beans</label>
 
-                        <input type="checkbox" class="form-check-input" id="squash" value="squash">
-                        <label class="form-check-label" for="exampleCheck1">Squash</label>
+                <br>
 
-                        <br>
+                <input type="checkbox" class="form-check-input" id="potatoes" value="potato">
+                <label class="form-check-label" for="exampleCheck1">Potatoes</label>
 
-                        <!-- <input type="checkbox" class="form-check-input" id="onions">
+                <br>
+
+                <input type="checkbox" class="form-check-input" id="squash" value="squash">
+                <label class="form-check-label" for="exampleCheck1">Squash</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="onions">
                         <label class="form-check-label" for="exampleCheck1">Onions</label>
 
                         <br>
@@ -162,52 +168,53 @@
 
                         <br> -->
 
-                    </div>
-                </div>
-
-                </div>  
+              </div>
             </div>
 
-            <!-- spice options       -->
-            <div id="accordion" class="col-sm-3">
-                <div class="card">
-                  <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                      <button id="spices" class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Spices
-                      </button>
-                    </h5>
-                  </div>
-                  <!-- dropdown options -->
-                  <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
+          </div>
+        </div>
 
-                        <input type="checkbox" class="form-check-input" id="salt" value="salt">
-                        <label class="form-check-label" for="exampleCheck1">Salt</label>
+        <!-- spice options       -->
+        <div id="accordion" class="col-sm-3">
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button id="spices" class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  Spices
+                </button>
+              </h5>
+            </div>
+            <!-- dropdown options -->
+            <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
 
-                        <br>
-                        
-                        <input type="checkbox" class="form-check-input" id="pepper" value="pepper">
-                        <label class="form-check-label" for="exampleCheck1">Pepper</label>
+                <input type="checkbox" class="form-check-input" id="salt" value="salt">
+                <label class="form-check-label" for="exampleCheck1">Salt</label>
 
-                        <br>
+                <br>
 
-                        <input type="checkbox" class="form-check-input" id="crushedRedPepper" value="crushedredpepper">
-                        <label class="form-check-label" for="exampleCheck1">Crushed Red Pepper</label>
+                <input type="checkbox" class="form-check-input" id="pepper" value="pepper">
+                <label class="form-check-label" for="exampleCheck1">Pepper</label>
 
-                        <br>
+                <br>
 
-                        <input type="checkbox" class="form-check-input" id="cayenne" value="cayenne">
-                        <label class="form-check-label" for="exampleCheck1">Cayenne</label>
+                <input type="checkbox" class="form-check-input" id="crushedRedPepper" value="crushedredpepper">
+                <label class="form-check-label" for="exampleCheck1">Crushed Red Pepper</label>
 
-                        <br>
+                <br>
 
-                        <input type="checkbox" class="form-check-input" id="thyme" value="thyme">
-                        <label class="form-check-label" for="exampleCheck1">Thyme</label>
+                <input type="checkbox" class="form-check-input" id="cayenne" value="cayenne">
+                <label class="form-check-label" for="exampleCheck1">Cayenne</label>
 
-                        <br>
+                <br>
 
-                        <!-- <input type="checkbox" class="form-check-input" id="garlicPowder">
+                <input type="checkbox" class="form-check-input" id="thyme" value="thyme">
+                <label class="form-check-label" for="exampleCheck1">Thyme</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="garlicPowder">
                         <label class="form-check-label" for="exampleCheck1">Garlic Powder</label>
 
                         <br>
@@ -227,98 +234,105 @@
 
                         <br> -->
 
-                    </div>
-                </div>
-
-                </div>    
+              </div>
             </div>
 
-            <!-- carb options     -->
-            <div id="accordion" class="col-sm-3">
-                <div class="card">
-                  <div class="card-header" id="headingFour">
-                    <h5 class="mb-0">
-                      <button id="carbs" class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                        Carbs
-                      </button>
-                    </h5>
-                  </div>
-                  <!-- dropdown options -->
-                  <div id="collapseFour" class="collapse hide" aria-labelledby="headingFour" data-parent="#accordion">
-                    <div class="card-body">
+          </div>
+        </div>
 
-                        <input type="checkbox" class="form-check-input" id="whiteRice" value="rice">
-                        <label class="form-check-label" for="exampleCheck1">Rice</label>
+        <!-- carb options     -->
+        <div id="accordion" class="col-sm-3">
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button id="carbs" class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                  aria-expanded="true" aria-controls="collapseFour">
+                  Carbs
+                </button>
+              </h5>
+            </div>
+            <!-- dropdown options -->
+            <div id="collapseFour" class="collapse hide" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
 
-                        <br>
-                        
-                        <!-- <input type="checkbox" class="form-check-input" id="brownRice" value="brownrice">
+                <input type="checkbox" class="form-check-input" id="whiteRice" value="rice">
+                <label class="form-check-label" for="exampleCheck1">Rice</label>
+
+                <br>
+
+                <!-- <input type="checkbox" class="form-check-input" id="brownRice" value="brownrice">
                         <label class="form-check-label" for="exampleCheck1">Brown Rice</label>
 
                         <br> -->
 
-                        <!-- <input type="checkbox" class="form-check-input" id="spaghetti">
+                <!-- <input type="checkbox" class="form-check-input" id="spaghetti">
                         <label class="form-check-label" for="exampleCheck1">spaghetti</label>
 
                         <br> -->
 
-                        <input type="checkbox" class="form-check-input" id="pasta" value="pasta">
-                        <label class="form-check-label" for="exampleCheck1">Pasta</label>
+                <input type="checkbox" class="form-check-input" id="pasta" value="pasta">
+                <label class="form-check-label" for="exampleCheck1">Pasta</label>
 
-                        <br>
+                <br>
 
-                        <input type="checkbox" class="form-check-input" id="tortillas" value="tortillas">
-                        <label class="form-check-label" for="exampleCheck1">Tortillas</label>
+                <input type="checkbox" class="form-check-input" id="tortillas" value="tortillas">
+                <label class="form-check-label" for="exampleCheck1">Tortillas</label>
 
-                        <br>
+                <br>
 
-                        <!-- <input type="checkbox" class="form-check-input" id="noodles">
+                <!-- <input type="checkbox" class="form-check-input" id="noodles">
                         <label class="form-check-label" for="exampleCheck1">Noodles</label>
 
                         <br> -->
 
-                        <input type="checkbox" class="form-check-input" id="bread" value="bread">
-                        <label class="form-check-label" for="exampleCheck1">Bread</label>
+                <input type="checkbox" class="form-check-input" id="bread" value="bread">
+                <label class="form-check-label" for="exampleCheck1">Bread</label>
 
-                        <br>
+                <br>
 
-                    </div>
-                </div>
-
-                </div>    
-            </div>
-
-            <button id="findRecipe" type="button" class="btn btn-outline-dark">Find Recipe!!</button>
-
-
-        </div>
-
-        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
+
           </div>
         </div>
 
+        <button id="findRecipe" type="button" class="btn btn-outline-dark">Find Recipe!!</button>
+
+
+      </div>
+
     </div>
 
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
 
-   <script src="script.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+
+  <script src="script.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

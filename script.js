@@ -99,7 +99,7 @@ $(document).ready(function () {
 
 
         var scrollDiv = $("<div class='carousel-item'>");
-        var scrollImg = $("<img class='d-block w-100 rounded-circle'>")
+        var scrollImg = $("<img class='d-block w-100 img-fluid'>")
         scrollImg.attr("src", results.photos[i].src.original);
         scrollDiv.append(scrollImg);
         $(".carousel-inner").append(scrollDiv);
