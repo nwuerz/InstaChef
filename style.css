@@ -79,6 +79,10 @@ body {
     text-align: center;
 }
 
+#ingredientsHeading {
+    text-align: center;
+}
+
 .recipeImg {
     display: block;
     margin-left: auto;

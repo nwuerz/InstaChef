@@ -161,7 +161,16 @@ $("#selectRecipe").click(function () {
   $("#container2").hide();
   $("#container3").show();
   $("#exampleModalLong").attr("aria-hidden", "true");
+});
 
+//go back to container 2 when "go back" button is pressed
+$("#goBack").click(function () {
+  $("#container2").show();
+  $("#container3").hide();
+  $("#finalRecipeTitle").empty();
+  $("#finalRecipeImg").empty();
+  $("#ingredientsDiv").empty();
+  $("#recipeInstructions").empty();
 });
 
 });
