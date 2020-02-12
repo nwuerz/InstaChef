@@ -5,6 +5,9 @@ $(document).ready(function () {
   var ingredientsArr = [];
   var selectRecipe = $("#selectRecipe");
 
+  //hide container3 div until needed...
+  // $("#container3").hide();
+
   // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
   $findRecipe.on("click", function () {
     // console.log($(".form-check-input")); 
@@ -60,9 +63,8 @@ $(document).ready(function () {
           method: 'GET',
         }).then(function (response) {
           console.log(response);
-          var recipeTitle = $("<h5>");
-          recipeTitle.text(response.title);
-          container.append(recipeTitle);
+          $("#finalRecipeTitle").text(response.title);
+          $("#finalRecipeImg").attr("src", response.image);
         });
       })
 
@@ -109,9 +111,14 @@ $(document).ready(function () {
     })
   })
   imageLoad();
-
+ //hide container 1 when "find recipe" button is clicked
   $("#findRecipe").click(function () {
-    $("#container2").hide();
+    $("#container1").hide();
   });
+
+//hide modal and container 2 when "take me to recipe" is clicked
+$("#selectRecipe").click(function () {
+  $("#container2").empty();
+});
 
 });
