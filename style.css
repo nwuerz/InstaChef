@@ -78,3 +78,26 @@ body {
 #ingredientsDiv {
     text-align: center;
 }
+
+.recipeImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recipeTitle {
+    text-align: center;
+    background-color: #6B8E23;
+    color: white;
+    background-clip: content-box;
+}
+
+#selectRecipe {
+    background-color: #6B8E23;
+    color: white;
+}
+
+#close {
+    background-color: white;
+    color: #6B8E23;
+}

@@ -40,9 +40,10 @@ $(document).ready(function () {
         container2.append(recipeImg);
         var imageBreak = $("<br>");
         container2.append(imageBreak);
-        var recipeBtn = $("<button>");
-        recipeBtn.text(response[i].title);
-        container2.append(recipeBtn);
+        var recipeTitle = $("<h3>");
+        recipeTitle.text(response[i].title);
+        recipeTitle.attr("class", "recipeTitle");
+        container2.append(recipeTitle);
         var recipeId = response[i].id;
         recipeImg.attr('id', recipeId)
         recipeImg.attr('class', 'recipeImg')
@@ -52,6 +53,8 @@ $(document).ready(function () {
       $('.recipeImg').on("click", function() {
         $("#nutrition").empty();
         $("#diets").empty();
+        $("#nutrition").text("Nutrition: ");
+        $("#diets").text("Diet: ");
         var recipeId = $(this).attr('id');
         console.log("recipeId is:" + recipeId);
         selectRecipe.attr('data-recipeId', recipeId);
