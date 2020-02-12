@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var container2 = $("#container2");
   var $findRecipe = $("#findRecipe");
-  var apiKey = "&apiKey=103be80050034030a9270b7a9de5630f";
+  var apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
   var ingredientsArr = [];
   var selectRecipe = $("#selectRecipe");
 
@@ -65,6 +65,18 @@ $(document).ready(function () {
           console.log(response);
           $("#finalRecipeTitle").text(response.title);
           $("#finalRecipeImg").attr("src", response.image);
+          //loop through ingredients and append to ingredients div
+          for (let i = 0; i < response.nutrition.ingredients.length; i++) {
+            var listEl = $("<li>");
+            listEl.text(response.nutrition.ingredients[i].name + " - " + response.nutrition.ingredients[i].amount + " " + response.nutrition.ingredients[i].unit);
+            $("#ingredientsDiv").append(listEl);
+          }
+          //loop through instructions and append to instructions div
+          for (let i = 0; i < response.analyzedInstructions[0].steps.length; i++) {
+            var instructionsEl = $("<p>");
+            instructionsEl.text(response.analyzedInstructions[0].steps[i].number + ". " + response.analyzedInstructions[0].steps[i].step);
+            $("#recipeInstructions").append(instructionsEl);
+          }
         });
       })
 
@@ -79,7 +91,7 @@ $(document).ready(function () {
 
 
   var imageLoad = (function () {
-    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=15&page=1"
+    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=100&page=1"
 
     // https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
 
