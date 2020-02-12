@@ -101,3 +101,13 @@ body {
     background-color: white;
     color: #6B8E23;
 }
+
+#goBack {
+    background-color: white;
+    color: #6B8E23;
+}
+
+#saveRecipe {
+    background-color: #6B8E23;
+    color: white;
+}
