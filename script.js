@@ -111,7 +111,7 @@ $(document).ready(function () {
   imageLoad();
 
   $("#findRecipe").click(function () {
-    $("#create").hide();
+    $("#container2").hide();
   });
 
 });
