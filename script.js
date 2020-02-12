@@ -1,34 +1,9 @@
 $(document).ready(function () {
   var container = $(".container");
-  //protein options
-  var $chicken = $("#chicken");
-  var $pork = $("#pork");
-  var $groundBeef = $("#groundBeef");
-  var $fish = $("#fish");
-  var $tofy = $("#tofu");
-  //veggie options
-  var $corn = $("#corn");
-  var $spinach = $("#spinach");
-  var $greenBeans = $("#greenBeans");
-  var $potatoes = $("#potatoes");
-  var $squash = $("#squash");
-  //spice options
-  var $salt = $("#salt");
-  var $pepper = $("#pepper");
-  var $crushedRedPepper = $("#crushedRedPepper");
-  var $cayenne = $("#cayenne");
-  var $thyme = $("#thyme");
-  //carbs options
-  var $whiteRice = $("#whiteRice");
-  var $brownRice = $("#brownRice");
-  var $pasta = $("#pasta");
-  var $tortillas = $("#tortillas");
-  var $bread = $("#bread");
-
   var $findRecipe = $("#findRecipe");
   var apiKey = "&apiKey=103be80050034030a9270b7a9de5630f";
   var ingredientsArr = [];
-
+  var selectRecipe = $("#selectRecipe");
 
   // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
   $findRecipe.on("click", function () {
@@ -65,11 +40,33 @@ $(document).ready(function () {
         var recipeBtn = $("<button>");
         recipeBtn.text(response[i].title);
         container.append(recipeBtn);
+        var recipeId = response[i].id;
+        recipeImg.attr('id', recipeId)
+        recipeImg.attr('class', 'recipeImg')
 
-        
       }
-    });
 
+      $('.recipeImg').on("click", function() {
+        var recipeId = $(this).attr('id');
+        selectRecipe.attr('data-recipeId', recipeId)
+      });
+
+      selectRecipe.on('click', function(){
+        var recipeId = $(this).attr('data-recipeId');
+        console.log(recipeId);
+        var finalRecipeUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/information?includeNutrition=true" + apiKey;
+        $.ajax({
+          url: finalRecipeUrl,
+          method: 'GET',
+        }).then(function (response) {
+          console.log(response);
+          var recipeTitle = $("<h5>");
+          recipeTitle.text(response.title);
+          container.append(recipeTitle);
+        });
+      })
+
+    });
     
 
   });
