@@ -65,3 +65,16 @@ body {
     max-height: 500px;
     width: auto;
 }
+
+#finalRecipeImg {
+    border-style: solid;
+    border-color: black;
+}
+
+#finalRecipeTitle {
+    text-align: center;
+}
+
+#ingredientsDiv {
+    text-align: center;
+}

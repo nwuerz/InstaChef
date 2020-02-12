@@ -6,7 +6,7 @@ $(document).ready(function () {
   var selectRecipe = $("#selectRecipe");
 
   //hide container3 div until needed...
-  // $("#container3").hide();
+  $("#container3").hide();
 
   // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
   $findRecipe.on("click", function () {
@@ -118,7 +118,10 @@ $(document).ready(function () {
 
 //hide modal and container 2 when "take me to recipe" is clicked
 $("#selectRecipe").click(function () {
-  $("#container2").empty();
+  $("#container2").hide();
+  $("#container3").show();
+  $("#exampleModalLong").attr("aria-hidden", "true");
+
 });
 
 });
