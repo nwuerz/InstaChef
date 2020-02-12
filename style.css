@@ -60,3 +60,8 @@ body {
     vertical-align: middle;
     line-height: normal;
 }
+
+.img-fluid {
+    max-height: 500px;
+    width: auto;
+}
