@@ -5,8 +5,9 @@ $(document).ready(function () {
   var ingredientsArr = [];
   var selectRecipe = $("#selectRecipe");
 
-  //hide container3 div until needed...
+  //hide divs until needed...
   $("#container3").hide();
+  $("#goBackPage2").hide();
 
   // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
   $findRecipe.on("click", function () {
@@ -47,8 +48,18 @@ $(document).ready(function () {
         var recipeId = response[i].id;
         recipeImg.attr('id', recipeId)
         recipeImg.attr('class', 'recipeImg')
-
       }
+      //create go back button for page 2
+      var goBackPage2 = $("<button>");
+      goBackPage2.text("Go Back");
+      goBackPage2.attr("id", "goBackPage2");
+      container2.append(goBackPage2);
+      //page 2 go back functionality
+      //go back from container 2
+      $("#goBackPage2").click(function () {
+      $("#container1").show();
+      $("#container2").empty();
+      });
       //when user clicks on image
       $('.recipeImg').on("click", function() {
         $("#nutrition").empty();
@@ -171,6 +182,12 @@ $("#goBack").click(function () {
   $("#finalRecipeImg").empty();
   $("#ingredientsDiv").empty();
   $("#recipeInstructions").empty();
+});
+
+//go back from container 2
+$("#goBackPage2").click(function () {
+  $("#container1").show();
+  $("#container2").empty();
 });
 
 });
