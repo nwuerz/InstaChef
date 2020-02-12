@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var container = $(".container");
+  var container2 = $("#container2");
   var $findRecipe = $("#findRecipe");
   var apiKey = "&apiKey=103be80050034030a9270b7a9de5630f";
   var ingredientsArr = [];
@@ -37,12 +37,12 @@ $(document).ready(function () {
         recipeImg.attr("src", response[i].image);
         recipeImg.attr("data-toggle", "modal");
         recipeImg.attr("data-target", "#exampleModalLong");
-        container.append(recipeImg);
+        container2.append(recipeImg);
         var imageBreak = $("<br>");
-        container.append(imageBreak);
+        container2.append(imageBreak);
         var recipeBtn = $("<button>");
         recipeBtn.text(response[i].title);
-        container.append(recipeBtn);
+        container2.append(recipeBtn);
         var recipeId = response[i].id;
         recipeImg.attr('id', recipeId)
         recipeImg.attr('class', 'recipeImg')
