@@ -27,7 +27,7 @@ body {
 
 #Start {
     padding: 150px;
-    margin: 100px;
+    margin: 15%;
     background-color: rgb(239, 247, 241);
     text-align: center;
     font-family: 'Bebas Neue', cursive;
@@ -122,4 +122,12 @@ body {
     margin-right: auto;
     background-color: white;
     color: #6B8E23;
+}
+
+.card-header {
+    background-color:#6B8E23 ;
+}
+
+.btn-link {
+    color: white;
 }
