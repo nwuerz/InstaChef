@@ -183,5 +183,10 @@ $("#goBack").click(function () {
   $("#ingredientsDiv").empty();
   $("#recipeInstructions").empty();
 });
+//go back from page 2
+$("#goBackPage2").click(function () {
+  $("#container1").show();
+  $("#container2").empty();
+  });
 
 });
