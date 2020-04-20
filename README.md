@@ -1,7 +1,7 @@
-# SMU-Dec-2019-Project-01
+# recipe-app
 
 Recipe App:
-Recipe app wants to make it as easy as possible for you to find the perfect meal to prepare, based on the ingredients you already have at home.
+Recipe makes it as easy as possible for you to find the perfect meal to prepare, based on the ingredients you already have at home.
 
 User Story:
 
