@@ -124,44 +124,6 @@ $(document).ready(function () {
 
   });
 
-
-
-
-
-
-  var imageLoad = (function () {
-    var pexelUrl = "https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=food&per_page=20&page=1"
-
-    // https://cors-anywhere.herokuapp.com/https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
-
-    $.ajax({
-      url: pexelUrl,
-      headers: {
-        'Authorization': '563492ad6f917000010000012e154557ed544fe39097059286f8e737',
-        'Content-Type': 'application/json'
-      },
-      method: 'GET'
-    }).then(function (results) {
-      console.log(results);
-      $(".carousel-inner").empty();
-
-      for (var i = 0; i < results.photos.length; i++) {
-
-
-        var scrollDiv = $("<div class='carousel-item'>");
-        var scrollImg = $("<img class='d-block w-100 img-fluid'>")
-        scrollImg.attr("src", results.photos[i].src.original);
-        scrollDiv.append(scrollImg);
-        $(".carousel-inner").append(scrollDiv);
-        if (i === 0) {
-          scrollDiv.addClass("active");
-        }
-
-      }
-
-    })
-  })
-  imageLoad();
  //hide container 1 when "find recipe" button is clicked
   $("#findRecipe").click(function () {
     $("#container1").hide();
@@ -190,3 +152,7 @@ $("#goBackPage2").click(function () {
   });
 
 });
+
+$('.carousel').carousel({
+  interval: 2000
+})
