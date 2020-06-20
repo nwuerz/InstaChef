@@ -2,7 +2,7 @@
 
 InstaChef is a single-page application that allows users to perform an indredient based search to find new recipes. check it out <a href="https://nwuerz.github.io/InstaChef/" target="_blank">here</a>!
 
-![InstaChef Demo](assets/insta-chef.gif)
+![](assets/insta-chef.gif)
 
 ## Technologies
 
