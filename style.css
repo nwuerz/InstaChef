@@ -1,145 +1,147 @@
 body {
-    background:#556B2F;
-    background-image: url("./assets/wallpaper-img.jpg");
+  background: #556b2f;
+  background-image: url("./assets/wallpaper-img.jpg");
 }
 
 .hideDiv {
-    display: none;
+  display: none;
 }
 
 .dispayDiv {
-    display: inline;
+  display: inline;
 }
 
 #findRecipe {
-    margin: auto;
-    margin-top: 5%;
-}
-
-#selectionsRow {
+  margin: auto;
+  margin-top: 5%;
 }
 
 .container {
-    font-family: 'Sriracha', cursive;
-    background-image: url();
+  font-family: "Sriracha", cursive;
+  background-image: url();
 }
 
 p {
-    font-size: 18px;
-    line-height: 150%;
-    letter-spacing: 1px;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 1px;
 }
 
 #Start {
-    padding: 5%;
-    margin: 20%;
-    text-align: center;
-    font-family: 'Sriracha', cursive;
-    background-image: url("./assets/home-img.jpg");
-    color: white;
+  padding: 5%;
+  margin: 20%;
+  text-align: center;
+  font-family: "Sriracha", cursive;
+  background-image: url("./assets/home-img.jpg");
+  color: white;
 }
 
 #startedBtn {
-    background-color: #6B8E23;
+  background-color: #6b8e23;
 }
 
 #homePic {
-    width: 100px;
+  width: 100px;
 }
 
 #findRecipe {
-    background-color: #6B8E23;
+  background-color: #6b8e23;
 }
 
 .btn {
-    color: white;
-    font-family: 'Sriracha', cursive;
-    border: none;
+  color: white;
+  font-family: "Sriracha", cursive;
+  border: none;
 }
 
 #protein {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 .img-fluid {
-    max-height: 500px;
-    width: auto;
+  max-height: 500px;
+  width: auto;
 }
 
 #finalRecipeImg {
-    border-style: solid;
-    border-color: black;
+  border-style: solid;
+  border-color: black;
 }
 
 #finalRecipeTitle {
-    text-align: center;
+  text-align: center;
 }
 
 #ingredientsDiv {
-    text-align: center;
+  text-align: center;
 }
 
 #ingredientsHeading {
-    text-align: center;
+  text-align: center;
 }
 
 .recipeImg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recipeTitle {
-    text-align: center;
-    background-color: #6B8E23;
-    color: white;
-    margin-left: 20%;
-    margin-right: 20%;
+  text-align: center;
+  color: black;
+  -webkit-text-fill-color: #6b8e23;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 #selectRecipe {
-    background-color: #6B8E23;
-    color: white;
+  background-color: #6b8e23;
+  color: white;
 }
 
 #close {
-    background-color: white;
-    color: #6B8E23;
+  background-color: white;
+  color: #6b8e23;
 }
 
 #goBack {
-    background-color: white;
-    color: #6B8E23;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  color: #6b8e23;
 }
 
 #saveRecipe {
-    background-color: #6B8E23;
-    color: white;
+  background-color: #6b8e23;
+  color: white;
 }
 
 #goBackPage2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    color: #6B8E23;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  color: #6b8e23;
 }
 
 .card {
-    border:none;
-    text-align: center;
+  border: none;
+  text-align: center;
 }
 
 .card-header {
-    background-color:#6B8E23 ;
+  background-color: #6b8e23;
 }
 
 .btn-link {
-    color: white;
+  color: white;
 }
 
 #carouselDiv {
-    margin: 13%;
+  margin: 13%;
 }
