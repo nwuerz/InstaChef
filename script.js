@@ -4,6 +4,7 @@ $(document).ready(function () {
   const container3 = $('#container3');
   const findRecipeButton = $("#findRecipe");
   const apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
+  let recipeData = {};
   let ingredientsArr = [];
   const selectRecipe = $("#selectRecipe");
 
@@ -21,6 +22,39 @@ $(document).ready(function () {
       <h3 class="recipeTitle">${title}</h3>`
 
       container2.append(html);
+      handleRecipeClick(id);
+    });
+  }
+
+  const updateModal = (data) => {
+    $("#nutrition").text("Nutrition: ");
+    $("#diets").text("Diet: ");
+
+    const { title, readyInMinutes, servings } = data;
+
+        $("#modalTitle").text(title);
+        $("#readyIn").text(`ready in ${readyInMinutes} minutes!`);
+        $("#servings").text(`serves ${servings}`);
+
+        //loop through first 9 nutrition items and append to nutrition div
+        for (let i = 0; i < 9; i++) {
+          const { title, amount, unit } = data.nutrition.nutrients[i];
+          const nutritionInfo = `<p>${title}: ${amount}${unit}</p>`
+
+          $("#nutrition").append(nutritionInfo);
+        }
+        // append diet info to div
+        data.diets.forEach(diet => {
+          const dietsInfo = `<p>${diet}</p>`;
+          $("#diets").append(dietsInfo);
+        })
+  }
+
+  const handleRecipeClick = (id) => {
+    $(`#${id}`).click( async () => {
+      let nutritionURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true${apiKey}`;
+      let nutritionData = await getData(nutritionURL);
+      updateModal(nutritionData);
     });
   }
 
@@ -53,11 +87,7 @@ $(document).ready(function () {
     });
 
     const ingredientsJoined = ingredientsArr.join(",+");
-    const url =
-      "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
-      ingredientsJoined +
-      apiKey;
-      console.log(ingredientsArr)
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsJoined}${apiKey}`;
     return url;
   }
 
@@ -66,60 +96,20 @@ $(document).ready(function () {
       const response = await fetch(url);
       return await response.json();
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
   // event listeners //
   findRecipeButton.click( async () => {
     let recipeURL = getRecipeURL();
-    let recipeData = await getData(recipeURL);
+    recipeData = await getData(recipeURL);
     
     container1.hide();
     showRecipes(recipeData);
     addBackButton();
     handleBackButtonClick();
-
-  
-      //when user clicks on image
-      $(".recipeImg").on("click", function () {
-        $("#nutrition").empty();
-        $("#diets").empty();
-        $("#nutrition").text("Nutrition: ");
-        $("#diets").text("Diet: ");
-        var recipeId = $(this).attr("id");
-        selectRecipe.attr("data-recipeId", recipeId);
-        var modalInfoUrl =
-          "https://api.spoonacular.com/recipes/" +
-          recipeId +
-          "/information?includeNutrition=true" +
-          apiKey;
-
-        $.ajax({
-          url: modalInfoUrl,
-          method: "GET",
-        }).then(function (response) {
-          const { title, readyInMinutes, servings } = response;
-
-          $("#modalTitle").text(title);
-          $("#readyIn").text(`ready in ${readyInMinutes} minutes!`);
-          $("#servings").text(`serves ${servings}`);
-
-          //loop through first 9 nutrition items and append to nutrition div
-          for (let i = 0; i < 9; i++) {
-            const { title, amount, unit } = response.nutrition.nutrients[i];
-            const nutritionInfo = `<p>${title}: ${amount}${unit}</p>`
-
-            $("#nutrition").append(nutritionInfo);
-          }
-          // append diet info to div
-          response.diets.forEach(diet => {
-            const dietsInfo = `<p>${diet}</p>`;
-            $("#diets").append(dietsInfo);
-          })
-
-        });
-      });
+  });
       //when user clicks "take me to recipe"..
       selectRecipe.on("click", function () {
         const recipeId = $(this).attr("data-recipeId");
@@ -166,7 +156,6 @@ $(document).ready(function () {
         });
         openPage3();
       });
-    });
 
   //go back to container 2 when "go back" button is pressed
   $("#goBack").click(() => {
