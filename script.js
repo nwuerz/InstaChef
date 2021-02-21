@@ -1,67 +1,86 @@
 $(document).ready(function () {
-  var container2 = $("#container2");
-  var $findRecipe = $("#findRecipe");
-  var apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
-  var ingredientsArr = [];
-  var selectRecipe = $("#selectRecipe");
+  const container1 = $("#container1");
+  const container2 = $("#container2");
+  const container3 = $('#container3');
+  const findRecipeButton = $("#findRecipe");
+  const apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
+  let ingredientsArr = [];
+  const selectRecipe = $("#selectRecipe");
 
-  //hide divs until needed...
   $("#container3").hide();
   $("#goBackPage2").hide();
 
-  // when user clicks findEl button... //change startDiv attribute to hide start page and display optionsDiv
-  $findRecipe.on("click", function () {
-    // console.log($(".form-check-input"));
-    $(".form-check-input").each(function (index, checkbox) {
-      // console.log(checkbox);
-      var isChecked = $(checkbox).prop("checked");
-      var ingredientVal = $(checkbox).val();
-      console.log(ingredientVal + " " + isChecked);
-      if (isChecked === true) {
-        ingredientsArr.push(ingredientVal);
-      }
+  // functions //
+
+  const showRecipes = (recipes) => {
+    recipes.forEach(recipe => {
+      const { image, title, id } = recipe;
+      const html = `
+      <img src=${image} id=${id} class="recipeImg" data-toggle="modal" data-target="#modal"/>
+      <br>
+      <h3 class="recipeTitle">${title}</h3>`
+
+      container2.append(html);
     });
-    console.log(ingredientsArr);
-    var ingredientsJoined = ingredientsArr.join(",+");
-    var recipeURL =
+  }
+
+  const addBackButton = () => {
+    const button = `<button id="goBackPage2">Go Back</button>`
+    container2.append(button);
+  }
+
+  const handleBackButtonClick = () => {
+    $("#goBackPage2").click( () => {
+      container1.show();
+      container2.empty();
+    });
+  }
+
+  const openPage3 = () => {
+    container2.hide();
+    container3.show();
+    $("#modalContainer").hide();
+    $("body").removeClass("modal-open");
+    $(".modal-backdrop").remove();
+  }
+
+  const getRecipeURL = () => {
+    $(".form-check-input").each( (i, checkbox) => {
+      const isChecked = $(checkbox).prop("checked");
+      const ingredientVal = $(checkbox).val();
+
+      isChecked ? ingredientsArr.push(ingredientVal) : null;
+    });
+
+    const ingredientsJoined = ingredientsArr.join(",+");
+    const url =
       "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
       ingredientsJoined +
       apiKey;
-    $.ajax({
-      url: recipeURL,
-      method: "GET",
-    }).then(function (response) {
-      console.log(recipeURL);
-      console.log(response);
-      //loop through object and create an image and button for each recipe option
-      for (let i = 0; i < response.length; i++) {
-        var recipeImg = $("<img>");
-        console.log(response[i].image);
-        recipeImg.attr("src", response[i].image);
-        recipeImg.attr("data-toggle", "modal");
-        recipeImg.attr("data-target", "#modal");
-        container2.append(recipeImg);
-        var imageBreak = $("<br>");
-        container2.append(imageBreak);
-        var recipeTitle = $("<h3>");
-        recipeTitle.text(response[i].title);
-        recipeTitle.attr("class", "recipeTitle");
-        container2.append(recipeTitle);
-        var recipeId = response[i].id;
-        recipeImg.attr("id", recipeId);
-        recipeImg.attr("class", "recipeImg");
-      }
-      //create go back button for page 2
-      var goBackPage2 = $("<button>");
-      goBackPage2.text("Go Back");
-      goBackPage2.attr("id", "goBackPage2");
-      container2.append(goBackPage2);
-      //page 2 go back functionality
-      //go back from container 2
-      $("#goBackPage2").click(function () {
-        $("#container1").show();
-        $("#container2").empty();
-      });
+      console.log(ingredientsArr)
+    return url;
+  }
+
+  const getData = async (url) => {
+    try {
+      const response = await fetch(url);
+      return await response.json();
+    } catch (error) {
+      throw error
+    }
+  }
+
+  // event listeners //
+  findRecipeButton.click( async () => {
+    let recipeURL = getRecipeURL();
+    let recipeData = await getData(recipeURL);
+    
+    container1.hide();
+    showRecipes(recipeData);
+    addBackButton();
+    handleBackButtonClick();
+
+  
       //when user clicks on image
       $(".recipeImg").on("click", function () {
         $("#nutrition").empty();
@@ -69,47 +88,42 @@ $(document).ready(function () {
         $("#nutrition").text("Nutrition: ");
         $("#diets").text("Diet: ");
         var recipeId = $(this).attr("id");
-        console.log("recipeId is:" + recipeId);
         selectRecipe.attr("data-recipeId", recipeId);
         var modalInfoUrl =
           "https://api.spoonacular.com/recipes/" +
           recipeId +
           "/information?includeNutrition=true" +
           apiKey;
+
         $.ajax({
           url: modalInfoUrl,
           method: "GET",
         }).then(function (response) {
-          console.log(response);
-          $("#modalTitle").text(response.title);
-          $("#readyIn").text(
-            "ready in " + response.readyInMinutes + " minutes!"
-          );
-          $("#servings").text("serves " + response.servings);
-          //loop through first p nutrition items and append to nutrition div
+          const { title, readyInMinutes, servings } = response;
+
+          $("#modalTitle").text(title);
+          $("#readyIn").text(`ready in ${readyInMinutes} minutes!`);
+          $("#servings").text(`serves ${servings}`);
+
+          //loop through first 9 nutrition items and append to nutrition div
           for (let i = 0; i < 9; i++) {
-            var nutritionInfo = $("<p>");
-            nutritionInfo.text(
-              "   " +
-                response.nutrition.nutrients[i].title +
-                " : " +
-                response.nutrition.nutrients[i].amount +
-                response.nutrition.nutrients[i].unit
-            );
+            const { title, amount, unit } = response.nutrition.nutrients[i];
+            const nutritionInfo = `<p>${title}: ${amount}${unit}</p>`
+
             $("#nutrition").append(nutritionInfo);
           }
-          for (let i = 0; i < response.diets.length; i++) {
-            var dietsInfo = $("<p>");
-            dietsInfo.text("   " + response.diets[i]);
+          // append diet info to div
+          response.diets.forEach(diet => {
+            const dietsInfo = `<p>${diet}</p>`;
             $("#diets").append(dietsInfo);
-          }
+          })
+
         });
       });
       //when user clicks "take me to recipe"..
       selectRecipe.on("click", function () {
-        var recipeId = $(this).attr("data-recipeId");
-        console.log(recipeId);
-        var finalRecipeUrl =
+        const recipeId = $(this).attr("data-recipeId");
+        const finalRecipeUrl =
           "https://api.spoonacular.com/recipes/" +
           recipeId +
           "/information?includeNutrition=true" +
@@ -117,23 +131,25 @@ $(document).ready(function () {
         $.ajax({
           url: finalRecipeUrl,
           method: "GET",
-        }).then(function (response) {
-          console.log(response);
-          $("#finalRecipeTitle").text(response.title);
-          $("#finalRecipeImg").attr("src", response.image);
+        }).then((response) => {
+          const { title, image, nutrition: { ingredients }, analyzedInstructions: { steps } } = response;
+          $("#finalRecipeTitle").text(title);
+          $("#finalRecipeImg").attr("src", image);
           //loop through ingredients and append to ingredients div
-          for (let i = 0; i < response.nutrition.ingredients.length; i++) {
-            var listEl = $("<p>");
-            listEl.text(
-              response.nutrition.ingredients[i].name +
-                " - " +
-                response.nutrition.ingredients[i].amount +
-                " " +
-                response.nutrition.ingredients[i].unit
-            );
+          ingredients.forEach(ingredient => {
+            const { name, amount, unit } = ingredient;
+            const listEl = `
+            <p>${name} - ${amount} ${unit}</p>`
             $("#ingredientsDiv").append(listEl);
-          }
+          });
+          
           //loop through instructions and append to instructions div
+          steps.forEach(item => {
+            const { number, step } = item;
+            const instructionsEl = `
+            <p>${number}. ${step}</p>`
+            $("#recipeInstructions").append(instructionsEl);
+          })
           for (
             let i = 0;
             i < response.analyzedInstructions[0].steps.length;
@@ -148,40 +164,18 @@ $(document).ready(function () {
             $("#recipeInstructions").append(instructionsEl);
           }
         });
+        openPage3();
       });
     });
-  });
-
-  //hide container 1 when "find recipe" button is clicked
-  $("#findRecipe").click(function () {
-    $("#container1").hide();
-  });
-
-  //hide modal and container 2 when "take me to recipe" is clicked
-  $("#selectRecipe").click(function () {
-    $("#container2").hide();
-    $("#container3").show();
-    $("#modalContainer").hide();
-    $("body").removeClass("modal-open");
-    $(".modal-backdrop").remove();
-  });
 
   //go back to container 2 when "go back" button is pressed
-  $("#goBack").click(function () {
-    $("#container2").show();
-    $("#container3").hide();
+  $("#goBack").click(() => {
+    container2.show();
+    container3.hide();
     $("#finalRecipeTitle").empty();
     $("#finalRecipeImg").empty();
     $("#ingredientsDiv").empty();
     $("#recipeInstructions").empty();
   });
-  //go back from page 2
-  $("#goBackPage2").click(function () {
-    $("#container1").show();
-    $("#container2").empty();
-  });
-});
-
-$(".carousel").carousel({
-  interval: 2000,
+ 
 });
