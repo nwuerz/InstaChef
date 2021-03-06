@@ -5,601 +5,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>InstaChef</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Sriracha&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet"/>
     <link rel="icon" href="./assets/hatchef.jpg" />
   </head>
 
   <body id="body">
+
      <!-- page 1 -->
      <div id="container1" class="container">
       <div class="row">
-        <!-- page 1 image container -->
-        <div class="col-sm-12">
-          <div
-            id="carouselDiv"
-            class="carousel slide shadow-lg"
-            data-ride="carousel"
-          >
-            <div class="carousel-inner shadow-lg">
-              <div class="carousel-item active">
-                <img class="d-block w-100 img-fluid" src="assets/food-1.jpg" />
-              </div>
-            </div>
-          </div>
-        </div>
+          <img id="primary-image" src="assets/food-1.jpg" alt="cutting board with veggies"/>
       </div>
-      <!-- page 1 ingredient opttions -->
+      <!-- page 1 ingredient options -->
       <div class="row" id="selectionsRow">
+
         <!-- protein options -->
-        <div id="accordion" class="col-sm-3">
+        <div id="proteins" class="col-sm-3">
           <div class="card shadow-lg">
-            <div class="card-header shadow-lg" id="headingOne">
-              <h5 class="mb-0">
-                <button
-                  id="protein"
-                  class="btn btn-link"
-                  data-toggle="collapse"
-                  data-target="#collapseOne"
-                  aria-expanded="false"
-                  aria-controls="collapseOne"
-                >
+            <div class="card-header shadow-lg">
+                <button class="btn btn-link card-text" data-toggle="collapse" data-target="#protein-options" aria-expanded="false" aria-controls="protein-options">
                   Protein
                 </button>
-              </h5>
             </div>
-            <!-- dropdown options -->
-            <div
-              id="collapseOne"
-              class="collapse hide"
-              aria-labelledby="headingOne"
-              data-parent="#accordion"
-            >
+
+            <!-- checkboxes -->
+            <div id="protein-options" class="collapse hide" data-parent="#proteins">
               <div class="card-body">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="chicken"
-                  value="chicken"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Chicken</label
-                >
 
+                <input type="checkbox" class="form-check-input" id="chicken" value="chicken"/>
+                <label for="chicken">Chicken</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="turkey"
-                  value="turkey"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Turkey</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="turkey" value="turkey"/>
+                <label for="turkey">Turkey</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pork"
-                  value="pork"
-                />
-                <label class="form-check-label" for="exampleCheck1">Pork</label>
-
+                <input type="checkbox" class="form-check-input" id="pork" value="pork"/>
+                <label for="pork">Pork</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="groundBeef"
-                  value="beef"
-                />
-                <label class="form-check-label" for="exampleCheck1">Beef</label>
-
+                <input type="checkbox" class="form-check-input" id="beef" value="beef"/>
+                <label for="beef">Beef</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="fish"
-                  value="fish"
-                />
-                <label class="form-check-label" for="exampleCheck1">Fish</label>
-
+                <input type="checkbox" class="form-check-input" id="fish" value="fish"/>
+                <label for="fish">Fish</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="egg"
-                  value="egg"
-                />
-                <label class="form-check-label" for="exampleCheck1">Egg</label>
-
+                <input type="checkbox" class="form-check-input" id="egg" value="egg"/>
+                <label for="egg">Egg</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="tofu"
-                  value="tofu"
-                />
-                <label class="form-check-label" for="exampleCheck1">Tofu</label>
-
+                <input type="checkbox" class="form-check-input" id="tofu" value="tofu"/>
+                <label for="tofu">Tofu</label>
                 <br />
+
               </div>
             </div>
           </div>
         </div>
-        <!-- veggies options -->
-        <div id="accordion" class="col-sm-3">
+
+        <!-- veggies options-->
+        <div id="veggies" class="col-sm-3">
           <div class="card shadow-lg">
-            <div class="card-header shadow-lg" id="headingTwo">
-              <h5 class="mb-0">
-                <button
-                  id="veggies"
-                  class="btn btn-link"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  Veggies & Fruits
+            <div class="card-header shadow-lg">
+                <button id="veggies" class="btn btn-link card-text ingredient-button" data-toggle="collapse" data-target="#veggies-options" aria-expanded="false" aria-controls="veggies-options">
+                  Veggies
                 </button>
-              </h5>
             </div>
-            <!-- dropdown options -->
-            <div
-              id="collapseTwo"
-              class="collapse hide"
-              aria-labelledby="headingTwo"
-              data-parent="#accordion"
-            >
+
+            <!-- checkboxes -->
+            <div id="veggies-options" class="collapse hide" data-parent="#veggies">
               <div class="card-body">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="corn"
-                  value="corn"
-                />
-                <label class="form-check-label" for="exampleCheck1">Corn</label>
 
+                <input type="checkbox" class="form-check-input" id="corn" value="corn"/>
+                <label for="corn">Corn</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="spinach"
-                  value="spinach"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Spinach</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="spinach" value="spinach" />
+                <label for="spinach" >Spinach</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="lettuce"
-                  value="lettuce"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Lettuce</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="lettuce" value="lettuce"/>
+                <label for="lettuce">Lettuce</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="kale"
-                  value="kale"
-                />
-                <label class="form-check-label" for="exampleCheck1">Kale</label>
-
+                <input type="checkbox" class="form-check-input" id="kale" value="kale"/>
+                <label for="kale">Kale</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="greenBeans"
-                  value="greenbeans"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Green Beans</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="greenBeans" value="greenbeans"/>
+                <label for="greenBeans">Green Beans</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="asparagus"
-                  value="asparagus"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Asparagus</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="asparagus" value="asparagus"/>
+                <label for="asparagus">Asparagus</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="potatoes"
-                  value="potato"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Potatoes</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="potatoes" value="potato"/>
+                <label for="potatoes">Potatoes</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="squash"
-                  value="squash"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Squash</label
-                >
-
-                <br />
-                <!-- new selections -->
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="onions"
-                  value="onion"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Onions</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="squash" value="squash"/>
+                <label for="squash">Squash</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="tomato"
-                  value="tomato"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Tomatoes</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="onions" value="onion"/>
+                <label for="onions">Onions</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="carrots"
-                  value="carrot"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Carrots</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="tomato" value="tomato"/>
+                <label for="tomato">Tomatoes</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="broccoli"
-                  value="broccoli"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Broccoli</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="carrots" value="carrot"/>
+                <label for="carrots">Carrots</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="avacado"
-                  value="avacado"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Avacado</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="broccoli" value="broccoli"/>
+                <label for="broccoli">Broccoli</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="cucumber"
-                  value="cucumber"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Cucumber</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="avacado" value="avacado"/>
+                <label for="avacado">Avacado</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="lemon"
-                  value="lemon"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Lemon</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="cucumber" value="cucumber"/>
+                <label for="cucumber">Cucumber</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="lime"
-                  value="lime"
-                />
-                <label class="form-check-label" for="exampleCheck1">Lime</label>
+                <input type="checkbox" class="form-check-input" id="lemon" value="lemon"/>
+                <label for="lemon">Lemon</label>
+                <br />
 
+                <input type="checkbox" class="form-check-input" id="lime" value="lime"/>
+                <label for="lime">Lime</label>
                 <br />
               </div>
             </div>
           </div>
         </div>
-        <!-- spice options       -->
-        <div id="accordion" class="col-sm-3">
+        
+        <!-- spice options -->
+        <div class="col-sm-3">
           <div class="card shadow-lg">
-            <div class="card-header shadow-lg" id="headingThree">
-              <h5 class="mb-0">
-                <button
-                  id="spices"
-                  class="btn btn-link"
-                  data-toggle="collapse"
-                  data-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
+            <div class="card-header shadow-lg">
+                <button id="spices" class="btn btn-link card-text ingredient-button"  data-toggle="collapse" data-target="#spice-options" aria-expanded="false" aria-controls="spice-options">
                   Spices & Sauces
                 </button>
-              </h5>
             </div>
-            <!-- dropdown options -->
-            <div
-              id="collapseThree"
-              class="collapse hide"
-              aria-labelledby="headingThree"
-              data-parent="#accordion"
-            >
+
+            <!-- checkboxes -->
+            <div id="spice-options" class="collapse hide" data-parent="#spice-options">
               <div class="card-body">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="salt"
-                  value="salt"
-                />
-                <label class="form-check-label" for="exampleCheck1">Salt</label>
-
+                
+                <input type="checkbox" class="form-check-input" id="salt" value="salt"/>
+                <label for="salt">Salt</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pepper"
-                  value="pepper"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Pepper</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="pepper" value="pepper"/>
+                <label for="pepper">Pepper</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="crushedRedPepper"
-                  value="crushed+red+pepper"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Crushed Red Pepper</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="crushedRedPepper" value="crushed+red+pepper"/>
+                <label for="crushedRedPepper">Crushed Red Pepper</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="cayenne"
-                  value="cayenne"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Cayenne</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="cayenne" value="cayenne"/>
+                <label for="cayenne">Cayenne</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="lemonPepper"
-                  value="lemon+pepper+seasoning"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Lemon Pepper</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="lemonPepper" value="lemon+pepper+seasoning"/>
+                <label for="lemonPepper">Lemon Pepper</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="garlicPowder"
-                  value="garlic+powder"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Garlic Powder</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="garlicPowder" value="garlic+powder" />
+                <label for="garlicPowder" >Garlic Powder</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="soySauce"
-                  value="soy+sauce"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Soy Sauce</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="soySauce" value="soy+sauce"/>
+                <label for="soySauce">Soy Sauce</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="ranchDressing"
-                  value="ranch+dressing"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Ranch Dressing</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="ranchDressing" value="ranch+dressing"/>
+                <label for="ranchDressing">Ranch Dressing</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="arbysSauce"
-                  value="hot+sauce"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Hot Sauce</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="arbysSauce" value="hot+sauce"/>
+                <label for="arbysSauce">Hot Sauce</label>
                 <br />
 
               </div>
             </div>
           </div>
         </div>
-        <!-- carb options     -->
-        <div id="accordion" class="col-sm-3">
+        <!-- carb options -->
+        <div class="col-sm-3 ">
           <div class="card shadow-lg">
-            <div class="card-header shadow-lg" id="headingFour">
-              <h5 class="mb-0">
-                <button
-                  id="carbs"
-                  class="btn btn-link"
-                  data-toggle="collapse"
-                  data-target="#collapseFour"
-                  aria-expanded="false"
-                  aria-controls="collapseFour"
-                >
+            <div class="card-header shadow-lg">
+                <button id="carbs" class="btn btn-link card-text ingredient-button" data-toggle="collapse" data-target="#carbs-options" aria-expanded="false" aria-controls="carbs-options">
                   Carbs
                 </button>
-              </h5>
             </div>
-            <!-- dropdown options -->
-            <div
-              id="collapseFour"
-              class="collapse hide"
-              aria-labelledby="headingFour"
-              data-parent="#accordion"
-            >
+
+            <!-- checkboxes -->
+            <div id="carbs-options" class="collapse hide" data-parent="#carbs">
               <div class="card-body">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="whiteRice"
-                  value="rice"
-                />
-                <label class="form-check-label" for="exampleCheck1">Rice</label>
-
+                <input type="checkbox" class="form-check-input" id="whiteRice" value="rice"/>
+                <label for="whiteRice">Rice</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pasta"
-                  value="pasta"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Pasta</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="pasta" value="pasta"/>
+                <label for="pasta">Pasta</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="tortillas"
-                  value="tortillas"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Tortillas</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="tortillas" value="tortillas"/>
+                <label for="tortillas">Tortillas</label>
                 <br />
 
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="bread"
-                  value="bread"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Bread</label
-                >
-
+                <input type="checkbox" class="form-check-input" id="bread" value="bread"/>
+                <label for="bread">Bread</label>
                 <br />
               </div>
             </div>
           </div>
         </div>
 
-        <button
-          id="findRecipe"
-          type="button"
-          class="btn btn-outline-dark shadow-lg"
-        >
+        <button id="findRecipe" type="button" class="btn btn-outline-dark shadow-lg">
           Find Recipe!
         </button>
       </div>
     </div>
+
     <!-- page 2 -->
-    <div id="container2" class="container"></div>
+    <div id="container2" class="container">
+    </div>
+
     <!-- modal -->
     <div id="modalContainer">
-      <div
-        class="modal fade"
-        id="modal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="modalTitle">
                 RECIPE NAME
               </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -612,12 +266,7 @@
             </div>
 
             <div class="modal-footer">
-              <button
-                id="close"
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
+              <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">
                 Close
               </button>
               <button id="selectRecipe" type="button" class="btn btn-primary">
@@ -628,8 +277,9 @@
         </div>
       </div>
     </div>
+
     <!-- page 3 -->
-    <div id="container3" class="container">
+    <div id="container3" class="container" style="display: none;">
       <div class="row">
         <div class="col-m-5 col-s-12">
           <h5 id="finalRecipeTitle"></h5>
@@ -647,8 +297,8 @@
       <div class="row">
         <div class="col-sm-12">
           <h5>Instructions</h5>
-
-          <div id="recipeInstructions" class="jumbotron col-sm-12"></div>
+          <div id="recipeInstructions" class="jumbotron col-sm-12">
+          </div>
         </div>
       </div>
 

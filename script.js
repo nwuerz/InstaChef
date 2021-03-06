@@ -3,15 +3,10 @@ $(document).ready(function () {
   const container2 = $("#container2");
   const container3 = $('#container3');
   const findRecipeButton = $("#findRecipe");
-  const apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
-  let recipeData = {};
-  let ingredientsArr = [];
   const selectRecipe = $("#selectRecipe");
-
-  $("#container3").hide();
-  $("#goBackPage2").hide();
-
-  // functions //
+  const apiKey = "&apiKey=d51cc1193eac4bbf92a955328a006a0c";
+  let ingredientsArr = [];
+  let recipeData = {};
 
   const showRecipes = (recipes) => {
     recipes.forEach(recipe => {
@@ -55,6 +50,40 @@ $(document).ready(function () {
       let nutritionURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true${apiKey}`;
       let nutritionData = await getData(nutritionURL);
       updateModal(nutritionData);
+      takeMeToRecipe(id);
+    });
+  }
+
+  const updateFinalRecipe = (data) => {
+    const { title, image, nutrition: { ingredients }, analyzedInstructions } = data;
+    $("#ingredientsDiv").empty();
+    $("#recipeInstructions").empty();
+
+    $("#finalRecipeTitle").text(title);
+    $("#finalRecipeImg").attr("src", image);
+    //loop through ingredients and append to ingredients div
+    ingredients.forEach(ingredient => {
+      const { name, amount, unit } = ingredient;
+      const listEl = `
+      <p>${name} - ${amount} ${unit}</p>`
+      $("#ingredientsDiv").append(listEl);
+    });
+    //loop through instructions and append to instructions div
+    analyzedInstructions[0].steps.forEach(item => {
+      const { number, step } = item;
+      const instructionsEl = `
+      <p>${number}. ${step}</p>`
+      $("#recipeInstructions").append(instructionsEl);
+    });
+  }
+
+  const takeMeToRecipe = (id) => {
+    selectRecipe.click( async () => {
+      const finalRecipeUrl = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true${apiKey}`;
+      const finalRecipeData = await getData(finalRecipeUrl);
+
+      updateFinalRecipe(finalRecipeData);
+      openPage3();
     });
   }
 
@@ -79,7 +108,7 @@ $(document).ready(function () {
   }
 
   const getRecipeURL = () => {
-    $(".form-check-input").each( (i, checkbox) => {
+    $(".ingredient-checkbox").each( (i, checkbox) => {
       const isChecked = $(checkbox).prop("checked");
       const ingredientVal = $(checkbox).val();
 
@@ -100,71 +129,22 @@ $(document).ready(function () {
     }
   }
 
-  // event listeners //
   findRecipeButton.click( async () => {
-    let recipeURL = getRecipeURL();
-    recipeData = await getData(recipeURL);
-    
-    container1.hide();
-    showRecipes(recipeData);
-    addBackButton();
-    handleBackButtonClick();
+    if(ingredientsArr.length > 0) {
+      let recipeURL = getRecipeURL();
+      recipeData = await getData(recipeURL);
+      
+      container1.hide();
+      showRecipes(recipeData);
+      addBackButton();
+      handleBackButtonClick();
+    } else {
+      alert('please select an ingredient!');
+    }
   });
-      //when user clicks "take me to recipe"..
-      selectRecipe.on("click", function () {
-        const recipeId = $(this).attr("data-recipeId");
-        const finalRecipeUrl =
-          "https://api.spoonacular.com/recipes/" +
-          recipeId +
-          "/information?includeNutrition=true" +
-          apiKey;
-        $.ajax({
-          url: finalRecipeUrl,
-          method: "GET",
-        }).then((response) => {
-          const { title, image, nutrition: { ingredients }, analyzedInstructions: { steps } } = response;
-          $("#finalRecipeTitle").text(title);
-          $("#finalRecipeImg").attr("src", image);
-          //loop through ingredients and append to ingredients div
-          ingredients.forEach(ingredient => {
-            const { name, amount, unit } = ingredient;
-            const listEl = `
-            <p>${name} - ${amount} ${unit}</p>`
-            $("#ingredientsDiv").append(listEl);
-          });
-          
-          //loop through instructions and append to instructions div
-          steps.forEach(item => {
-            const { number, step } = item;
-            const instructionsEl = `
-            <p>${number}. ${step}</p>`
-            $("#recipeInstructions").append(instructionsEl);
-          })
-          for (
-            let i = 0;
-            i < response.analyzedInstructions[0].steps.length;
-            i++
-          ) {
-            var instructionsEl = $("<p>");
-            instructionsEl.text(
-              response.analyzedInstructions[0].steps[i].number +
-                ". " +
-                response.analyzedInstructions[0].steps[i].step
-            );
-            $("#recipeInstructions").append(instructionsEl);
-          }
-        });
-        openPage3();
-      });
 
-  //go back to container 2 when "go back" button is pressed
   $("#goBack").click(() => {
     container2.show();
     container3.hide();
-    $("#finalRecipeTitle").empty();
-    $("#finalRecipeImg").empty();
-    $("#ingredientsDiv").empty();
-    $("#recipeInstructions").empty();
   });
- 
 });

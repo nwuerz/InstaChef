@@ -3,6 +3,44 @@ body {
   background-image: url("./assets/wallpaper-img.jpg");
 }
 
+.card-text {
+  font-size: 20px;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+input[type="checkbox"] + label:before {
+  border: 1px solid #333;
+  content: "\00a0";
+  display: inline-block;
+  font: 10px sans-serif;
+  height: 16px;
+  margin: 5px 5px 0 0;
+  vertical-align: top;
+  width: 16px;
+}
+
+input[type="checkbox"]:checked + label:before {
+  background: #556b2f;
+  color: white;
+  content: "\2713";
+  text-align: center;
+}
+
+input[type="checkbox"]:checked + label:after {
+  font-weight: bold;
+}
+
+label {
+  font-size: 15px;
+}
+
+#selectionsRow {
+  margin-top: 10%;
+}
+
 .hideDiv {
   display: none;
 }
@@ -45,7 +83,10 @@ p {
 }
 
 #findRecipe {
-  background-color: #6b8e23;
+  background-color: #eff1e9;
+  color: #6b8e23;
+  height: 50px;
+  width: 160px;
 }
 
 .btn {
@@ -54,15 +95,16 @@ p {
   border: none;
 }
 
-#protein {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
+.btn:hover {
+  color: rgba(255, 255, 255, 0.479);
+  text-decoration: none;
 }
 
-.img-fluid {
-  max-height: 500px;
-  width: auto;
+#primary-image {
+  margin: auto;
+  align-content: center;
+  height: 500px;
+  width: 85%;
 }
 
 #finalRecipeImg {
@@ -74,12 +116,12 @@ p {
   text-align: center;
 }
 
-#ingredientsDiv {
+#ingredientsHeading {
   text-align: center;
 }
 
-#ingredientsHeading {
-  text-align: center;
+.ingredient-checkbox {
+  text-align: left;
 }
 
 .recipeImg {
@@ -131,11 +173,18 @@ p {
 
 .card {
   border: none;
-  text-align: center;
+  text-align: left;
+  background-color: #eff1e9;
 }
 
 .card-header {
   background-color: #6b8e23;
+  padding: 2px;
+  text-align: center;
+}
+
+.card-body {
+  padding-left: 30%;
 }
 
 .btn-link {
