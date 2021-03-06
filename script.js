@@ -108,7 +108,7 @@ $(document).ready(function () {
   }
 
   const getRecipeURL = () => {
-    $(".ingredient-checkbox").each( (i, checkbox) => {
+    $(".form-check-input").each( (i, checkbox) => {
       const isChecked = $(checkbox).prop("checked");
       const ingredientVal = $(checkbox).val();
 
@@ -129,18 +129,19 @@ $(document).ready(function () {
     }
   }
 
-  findRecipeButton.click( async () => {
-    if(ingredientsArr.length > 0) {
-      let recipeURL = getRecipeURL();
-      recipeData = await getData(recipeURL);
-      
-      container1.hide();
-      showRecipes(recipeData);
-      addBackButton();
-      handleBackButtonClick();
-    } else {
-      alert('please select an ingredient!');
-    }
+  const displayPage2 = async () => {
+    let recipeURL = getRecipeURL();
+    recipeData = await getData(recipeURL);
+
+    container1.hide();
+    showRecipes(recipeData);
+    addBackButton();
+    handleBackButtonClick();
+  }
+
+  findRecipeButton.click( () => {
+    getRecipeURL();
+    ingredientsArr.length === 0 ? alert('please select an ingredient!'): displayPage2();
   });
 
   $("#goBack").click(() => {
